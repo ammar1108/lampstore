@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Coffee | Coffee Shop</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background: url("bg1.jpeg") no-repeat center center/cover;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .order-container {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 30px;
+        border-radius: 10px;
+        text-align: center;
+        width: 400px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .order-container h2 {
+        margin-bottom: 20px;
+        color: white;
+      }
+
+      .input-field,
+      .select-field {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 5px;
+        background: rgba(255, 255, 255, 0.2);
+        /* color: white; */
+        color: black;
+        font-size: 16px;
+      }
+
+      .input-field::placeholder {
+        /* color: rgba(255, 255, 255, 0.7); */
+        color: black;
+      }
+
+      .order-btn {
+        width: 100%;
+        padding: 10px;
+        background: #ffb74d;
+        border: none;
+        border-radius: 5px;
+        font-size: 18px;
+        color: white;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .order-btn:hover {
+        background: #ff9800;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="order-container">
+      <h2>Place Your Coffee Order</h2>
+      <form>
+        <select class="select-field" required>
+          <option value="" disabled selected>Select Coffee Type</option>
+          <option value="Latte">Latte</option>
+          <option value="Espresso">Espresso</option>
+          <option value="Cappuccino">Cappuccino</option>
+          <option value="Mocha">Mocha</option>
+          <option value="Americano">Americano</option>
+          <option value="Macchiato">Macchiato</option>
+        </select>
+
+        <select class="select-field" required>
+          <option value="" disabled selected>Select Size</option>
+          <option value="Small">Small</option>
+          <option value="Medium">Medium</option>
+          <option value="Large">Large</option>
+        </select>
+
+        <input
+          type="number"
+          class="input-field"
+          placeholder="Quantity"
+          min="1"
+          required
+        />
+        <input
+          type="text"
+          class="input-field"
+          placeholder="Your Name"
+          required
+        />
+        <input
+          type="tel"
+          class="input-field"
+          placeholder="Phone Number"
+          required
+        />
+        <input
+          type="text"
+          class="input-field"
+          placeholder="Delivery Address"
+          required
+        />
+
+        <button type="submit" class="order-btn">Place Order</button>
+      </form>
+    </div>
+  </body>
+</html>

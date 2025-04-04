@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #111;
+            color: #fff;
+            text-align: center;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #ffcc00;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            padding: 10px;
+        }
+
+        nav ul li {
+            position: relative;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li:hover {
+            background-color: #ffcc00;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(255, 204, 0, 0.5);
+        }
+
+        nav ul li:hover a {
+            color: black;
+            font-weight: bold;
+        }
+
+        .cart-container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: #222;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+        }
+
+        .cart-container h1{
+            color: #ffcc00;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #444;
+        }
+
+        .cart-item img {
+            width: 60px;
+            border-radius: 5px;
+        }
+
+        .cart-item h3 {
+            flex: 1;
+            text-align: left;
+            margin-left: 10px;
+        }
+
+        .remove-btn {
+            background: red;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .remove-btn:hover {
+            background: darkred;
+        }
+
+        .total {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .checkout-btn {
+            background: #ffcc00;
+            color: #111;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        .checkout-btn:hover {
+            background: #e6b800;
+        }
+
+        .input-field{
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 5px;
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        /* color: black; */
+        font-size: 16px;
+      }
+
+      .input-field::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+        /* color: black; */
+      }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Bright</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html #product">Products</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="cart-container">
+        <h1>Your Cart</h1>
+        <div id="cart-items"></div>
+        <form>
+            <input
+          type="text"
+          class="input-field"
+          placeholder="Your Name"
+          required
+        />
+        <input
+          type="tel"
+          class="input-field"
+          placeholder="Phone Number"
+          required
+        />
+        <input
+          type="text"
+          class="input-field"
+          placeholder="Delivery Address"
+          required
+        />
+        </form>
+        <p class="total">Total: $<span id="total-price">0</span></p>
+        <button class="checkout-btn">Proceed to Checkout</button>
+    </div>
+
+    <script>
+        function loadCart() {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            let cartItemsDiv = document.getElementById("cart-items");
+            let totalPrice = 0;
+
+            cartItemsDiv.innerHTML = "";
+            cart.forEach((item, index) => {
+                totalPrice += item.price;
+                cartItemsDiv.innerHTML += `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.name}">
+                        <h3>${item.name} - $${item.price}</h3>
+                        <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+                    </div>
+                `;
+            });
+
+            document.getElementById("total-price").textContent = totalPrice;
+        }
+
+        function removeItem(index) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cart.splice(index, 1);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            loadCart();
+        }
+
+        window.onload = loadCart;
+    </script>
+</body>
+</html>

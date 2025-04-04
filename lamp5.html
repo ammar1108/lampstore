@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ceiling Lamp</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        
+        }
+
+        body {
+            background: #111;
+            color: #fff;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #ffcc00;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            padding: 10px;
+        }
+
+        nav ul li {
+            position: relative;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li:hover {
+            background-color: #ffcc00;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(255, 204, 0, 0.5);
+        }
+
+        nav ul li:hover a {
+            color: black;
+            font-weight: bold;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 50px 80px;
+            position: relative;
+        }
+
+        .text-content h1 {
+            font-size: 50px;
+            font-weight: bold;
+        }
+
+        .text-content h1 span {
+            color: #ffcc00;
+        }
+
+        .text-content p {
+            margin: 15px 0;
+            font-size: 16px;
+            color: #bbb;
+        }
+
+        .cart-btn {
+            background: #ffcc00;
+            color: #111;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s ease-in-out;
+            margin-top: 15px;
+        }
+
+        .cart-btn:hover {
+            background: #e6b800;
+        }
+
+        .lamp-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .yellow-box {
+            position: absolute;
+            background: #ffcc00;
+            width: 400px;
+            height: 200px;
+        }
+
+        .left {
+            left: -140px;
+        }
+
+        .right {
+            right: -72px;
+        }
+
+        .lamp-image {
+            position: relative;
+            width: 400px;
+            z-index: 2;
+            transition: ease-in-out 0.5s;
+        }
+        .lamp-image:hover{
+            width: 500px;
+        }
+        #next{
+            background: #ffcc00;
+            color: #111;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 50px;
+            margin-left: 90vw;
+            margin-top: 90vh;
+            text-decoration: none;
+        }
+        #pre{
+            background: #ffcc00;
+            color: #111;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 50px;
+            margin-left: 10vw;
+            margin-top: 90vh;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Bright</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html #our">Products</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="text-content">
+            <h1><span>Ceiling</span> Lamp</h1>
+            <p>$999</p>
+            <button class="cart-btn" onclick="addToCart()">ADD TO CART</button>
+        </div>
+        <div class="lamp-container">
+            <div class="yellow-box left"></div>
+            <div class="yellow-box right"></div>
+            <img src="lamp5.png" alt="Ceiling Lamp" class="lamp-image">
+        </div>
+    </section>
+    <a id="next" href="lamp6.html">Next</a>
+    <a id="pre" href="lamp4.html">Previous</a>
+
+    <script>
+        function addToCart() {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            let product = { name: "Ceiling Lamp", price: 999, image: "lamp5.png" };
+            cart.push(product);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            alert("Item added to cart!");
+        }
+    </script>
+</body>
+</html>
+
